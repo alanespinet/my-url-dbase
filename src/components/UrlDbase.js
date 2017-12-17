@@ -1,8 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Url from './Url';
 import UrlList from './UrlList';
 import AddUrl from './AddUrl';
+import MainPage from './MainPage';
+import AboutPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
+import Header from './Header';
 
 export default class UrlDbase extends React.Component {
   state = {
@@ -22,21 +27,40 @@ export default class UrlDbase extends React.Component {
   };
 
 
-  render = () => (
-    <div>
-      <UrlList
-        urls={this.state.urls}
-        handleSelection={this.handleSelection}
-        handleDeletion={this.handleDeletion}
-      />
-      <Url
-        title={this.state.selected.title}
-        url={this.state.selected.url}
-        description={this.state.selected.description}
-      />
-      <AddUrl handleAddUrl={this.handleAddUrl} />
-    </div>
-  );
+
+
+  render = () => {
+
+    const getMainPage = () => {
+      return (
+        <MainPage
+         urls={this.state.urls}
+         handleSelection={this.handleSelection}
+         handleDeletion={this.handleDeletion}
+         selected={this.state.selected}
+       />
+      );
+    };
+
+    const getAddUrl = (props) => (
+      <AddUrl handleAddUrl={this.handleAddUrl} history={props.history} />
+    );
+
+
+    return (
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Switch>
+            <Route path="/" component={getMainPage} exact={true}/>
+            <Route path="/add" component={getAddUrl} />
+            <Route path="/about" component={AboutPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  };
 
 
   handleAddUrl = (url) => {

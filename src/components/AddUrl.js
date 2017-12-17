@@ -12,7 +12,8 @@ export default class AddUrl extends React.Component {
     const description = e.target.elements.urlTitle.value.trim();
     const error = this.props.handleAddUrl({ title, url, description });
 
-    this.setState( () => ({ error }));
+    if(error) this.setState( () => ({ error }));
+    else this.props.history.push("/");
   }
 
 
