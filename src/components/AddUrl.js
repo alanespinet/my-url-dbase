@@ -1,26 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addUrl } from '../redux/actions/actions';
 
 
-export default class AddUrl extends React.Component {
 
-  state = { error: undefined };
+class AddUrl extends React.Component {
 
   onHandleAddUrl = (e) => {
     e.preventDefault();
     const title = e.target.elements.urlTitle.value.trim();
     const url = e.target.elements.urlUrl.value;
     const description = e.target.elements.urlTitle.value.trim();
-    const error = this.props.handleAddUrl({ title, url, description });
 
-    if(error) this.setState( () => ({ error }));
-    else this.props.history.push("/");
+    this.props.dispatch( addUrl({ title, url, description }) );
+    this.props.history.push("/");
   }
 
 
   render(){
     return (
       <div>
-        { this.state.error && <p>Error: {this.state.error}</p> }
         <form onSubmit={this.onHandleAddUrl}>
           <label htmlFor="url-title">Title:</label>
           <input type="text" name="urlTitle" id="url-title"/>
@@ -37,3 +37,6 @@ export default class AddUrl extends React.Component {
   }
 
 }
+
+
+export default connect()(AddUrl);
