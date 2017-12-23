@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import urlsReducer from './reducers/urls';
+import thunk from 'redux-thunk';
 
-export default createStore( urlsReducer );
+export default createStore( urlsReducer, applyMiddleware(thunk) );

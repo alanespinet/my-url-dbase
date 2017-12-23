@@ -39,6 +39,13 @@ export default ( state = defaultState, action ) => {
         urls: state.urls.filter( (url) => url.title !== action.title )
       }
 
+    case 'SET_URLS':
+      return {
+        ...state,
+        urls: action.urls
+      }
+
+
     default:
       return state;
   }

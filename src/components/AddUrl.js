@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addUrl } from '../redux/actions/actions';
+import { startAddUrl } from '../redux/actions/actions';
 
 
 
@@ -11,9 +11,9 @@ class AddUrl extends React.Component {
     e.preventDefault();
     const title = e.target.elements.urlTitle.value.trim();
     const url = e.target.elements.urlUrl.value;
-    const description = e.target.elements.urlTitle.value.trim();
+    const description = e.target.elements.urlDescription.value.trim();
 
-    this.props.dispatch( addUrl({ title, url, description }) );
+    this.props.dispatch( startAddUrl({ title, url, description }) );
     this.props.history.push("/");
   }
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import UrlList from './UrlList';
 import Url from './Url';
 
-import { getUrl, deleteUrl } from '../redux/actions/actions';
+import { getUrl, startDeleteUrl } from '../redux/actions/actions';
 
 
 class MainPage extends React.Component {
@@ -14,7 +14,7 @@ class MainPage extends React.Component {
   }
 
   handleDeletion = (title) => {
-    this.props.dispatch( deleteUrl(title) );
+    this.props.dispatch( startDeleteUrl(title) );
   }
 
 
@@ -39,6 +39,5 @@ class MainPage extends React.Component {
 
 
 const mapStateToProps = (state) => state;
-
 
 export default connect(mapStateToProps)(MainPage);
