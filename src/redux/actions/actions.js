@@ -1,5 +1,6 @@
 import database from '../../firebase/firebase';
 const urlsdb = database.ref().child('urls');
+const usersdb = database.ref().child('users');
 
 export const getUrl = (title) => ({
   type: 'GET_URL',
@@ -13,18 +14,19 @@ const addUrl = (url) => ({
 });
 
 export const startAddUrl = (purl) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
 
+    const uid = getState().auth.uid;
     const title = purl.title;
     const urlObj = {
       url: purl.url,
       description: purl.description
     };
 
-    urlsdb.child(title).set(urlObj).then( () => {
+    usersdb.child(uid).child(`urls/${title}`).set(urlObj).then( () => {
       dispatch( addUrl({
-        title: title,
-        ...urlObj
+          title: title,
+          ...urlObj
       }) );
     });
   };
@@ -37,8 +39,9 @@ const deleteUrl = (title) => ({
 });
 
 export const startDeleteUrl = (title) => {
-  return (dispatch) => {
-    urlsdb.child(title).remove().then( () => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    usersdb.child(uid).child(`urls/${title}`).remove().then( () => {
       dispatch( deleteUrl(title) );
     });
   }
@@ -52,10 +55,11 @@ const setUrls = (urls) => ({
 
 
 export const startSetUrls = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
 
     // fetch urls data from firebase
-    return urlsdb.once('value')
+    return usersdb.child(`${uid}/urls`).once('value')
       .then( (snapshot) => {
         const urls = [];
 
@@ -66,6 +70,8 @@ export const startSetUrls = () => {
             ...childSnapshot.val()
           });
         });
+
+        // console.log(urls);
 
         // call setUrls
         dispatch( setUrls(urls) );

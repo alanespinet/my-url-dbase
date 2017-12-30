@@ -6,5 +6,4 @@ export default () => (
     <p>404! Page not found...</p>
     <Link to="/">Get back to Home</Link>
   </div>
-
 );

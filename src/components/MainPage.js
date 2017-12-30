@@ -19,6 +19,7 @@ class MainPage extends React.Component {
 
 
   render(){
+    
     return (
       <div>
         <UrlList
@@ -38,6 +39,6 @@ class MainPage extends React.Component {
 }
 
 
-const mapStateToProps = (state) => state;
+const mapStateToUrls = (state) => state.urls;
 
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToUrls)(MainPage);

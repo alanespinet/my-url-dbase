@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
 import Url from './Url';
 import UrlList from './UrlList';
@@ -7,25 +8,29 @@ import ConnectedAddUrl from './AddUrl';
 import ConnectedMainPage from './MainPage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
-import Header from './Header';
+import ConnectedLoginPage from './LoginPage';
+import ConnectedHeader from './Header';
 
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
+export const history = createHistory();
 
 
 export default class UrlDbase extends React.Component {
   render = () => {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <div>
-          <Header />
           <Switch>
-            <Route path="/" component={ConnectedMainPage} exact={true}/>
-            <Route path="/add" component={ConnectedAddUrl} />
-            <Route path="/about" component={AboutPage} />
+            <PublicRoute path="/" component={ConnectedLoginPage} exact={true}/>
+            <PrivateRoute path="/urls" component={ConnectedMainPage} />
+            <PrivateRoute path="/add" component={ConnectedAddUrl} />
+            <PrivateRoute path="/about" component={AboutPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   };
 }
