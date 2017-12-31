@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { startLogout } from '../firebase/auth';
 
 export const Header = ({ startLogout }) => (
-  <header>
-    <h1>My UrlDBase App</h1>
+  <header className="menu">
     <NavLink activeClassName="active" to="/urls"> Home </NavLink>
     <NavLink activeClassName="active" to="/add"> Add </NavLink>
     <NavLink activeClassName="active" to="/about"> About </NavLink>

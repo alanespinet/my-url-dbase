@@ -1,0 +1,29 @@
+.top-header {
+  background-color: $teal;
+  padding: 0 10px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-header img { max-width: 100px; }
+.top-header h1 { margin-left: 20px; }
+
+.top-header p {
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.top-header .logo-title {
+  display: flex;
+  align-items: center;
+}
+
+
+@media ( max-width: 767px ){
+  .top-header img { max-width: 60px; }
+  .top-header h1 { font-size: 26px; }
+  .top-header p { font-size: 14px; }
+}

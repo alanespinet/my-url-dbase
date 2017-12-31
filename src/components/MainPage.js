@@ -19,20 +19,22 @@ class MainPage extends React.Component {
 
 
   render(){
-    
-    return (
-      <div>
-        <UrlList
-          urls={this.props.urls}
-          handleSelection={this.handleSelection}
-          handleDeletion={this.handleDeletion}
-        />
 
-        <Url
-          title={this.props.selected.title}
-          url={this.props.selected.url}
-          description={this.props.selected.description}
-        />
+    return (
+      <div className="main-page">
+        <div className="wrapper">
+          <UrlList
+            urls={this.props.urls}
+            handleSelection={this.handleSelection}
+            handleDeletion={this.handleDeletion}
+          />
+
+          <Url
+            title={this.props.selected.title}
+            url={this.props.selected.url}
+            description={this.props.selected.description}
+          />
+        </div>
       </div>
     );
   }

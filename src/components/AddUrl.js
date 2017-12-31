@@ -20,17 +20,28 @@ class AddUrl extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="add-page">
         <form onSubmit={this.onHandleAddUrl}>
-          <label htmlFor="url-title">Title:</label>
-          <input type="text" name="urlTitle" id="url-title"/>
+          <div className="wrapper">
+            <div className="control-group">
+              <label htmlFor="url-title">Title:</label>
+              <input type="text" name="urlTitle" id="url-title"/>
+            </div>
 
-          <label htmlFor="url-url">Url:</label>
-          <input type="text" name="urlUrl" id="url-url"/>
+            <div className="control-group">
+              <label htmlFor="url-url">Url:</label>
+              <input type="text" name="urlUrl" id="url-url"/>
+            </div>
 
-          <label htmlFor="url-description">Description:</label>
-          <input type="text" name="urlDescription" id="url-description"/>
-          <button>Add Url</button>
+            <div className="control-group">
+              <label htmlFor="url-description">Description:</label>
+              <textarea name="urlDescription" id="url-description"></textarea>
+            </div>
+
+            <div className="button-wrapper">
+              <button>Add Url</button>
+            </div>
+          </div>
         </form>
       </div>
     );

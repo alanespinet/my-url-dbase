@@ -5,12 +5,9 @@ export default class UrlSingleInList extends React.Component {
 
   render(){
     return (
-      <div>
-        <div onClick={this.onHandleSelection}>
-          <TitleText
-            headline="Title"
-            content={this.props.title}
-          />
+      <div className="url-single-in-list" onClick={this.onHandleSelection}>
+        <div className="url-single-in-list__text">
+          <p>{this.props.title}</p>
         </div>
         <button onClick={this.onHandleDeletion}>Delete</button>
       </div>
@@ -19,7 +16,13 @@ export default class UrlSingleInList extends React.Component {
   }
 
 
-  onHandleSelection = () => {
+  onHandleSelection = (e) => {
+    var current = e.currentTarget;
+    var elements = document.getElementsByClassName('url-single-in-list');
+
+    for(let element of elements){ element.classList.remove('active'); }
+    current.classList.add('active');
+
     this.props.handleSelection( this.props.title );
   }
 

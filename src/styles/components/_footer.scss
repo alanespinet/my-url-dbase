@@ -1,0 +1,15 @@
+.footer {
+  background-color: $teal;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer a { transition: all .3s ease; }
+.footer a:hover { color: $gold; }
+
+
+@media ( max-width: 767px ){
+  .footer p { font-size: 12px; }
+}

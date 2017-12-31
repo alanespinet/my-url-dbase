@@ -10,6 +10,8 @@ import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
 import ConnectedLoginPage from './LoginPage';
 import ConnectedHeader from './Header';
+import Footer from './Footer';
+import TopHeader from './TopHeader';
 
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -22,6 +24,7 @@ export default class UrlDbase extends React.Component {
     return (
       <Router history={history}>
         <div>
+          <TopHeader />
           <Switch>
             <PublicRoute path="/" component={ConnectedLoginPage} exact={true}/>
             <PrivateRoute path="/urls" component={ConnectedMainPage} />
@@ -29,6 +32,7 @@ export default class UrlDbase extends React.Component {
             <PrivateRoute path="/about" component={AboutPage} />
             <Route component={NotFoundPage} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

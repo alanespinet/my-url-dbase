@@ -1,0 +1,116 @@
+.main-page {
+  height: calc(100vh - 196px);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.main-page .wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.main-page .urls-list {
+  height: 350px;
+  border: 1px solid $teal;
+  overflow-y: scroll;
+}
+
+.main-page .urls-list-container {
+  flex-basis: 35%;
+}
+
+.main-page .selected-url {
+  flex-grow: 1;
+  margin-left: 60px;
+  margin-top: 25px;
+}
+
+.main-page h2 {
+  font-size: 16px;
+  color: $teal;
+  padding-bottom: 10px;
+}
+
+.main-page .url-single-in-list {
+  display: flex;
+  padding: 0 10px;
+  transition: all .3s ease;
+}
+
+.main-page .url-single-in-list.active { background-color: $teal; }
+.main-page .url-single-in-list.active .url-single-in-list__text p { color: $gray-light; }
+
+.main-page .url-single-in-list.active button { color: $gold; }
+
+.main-page .url-single-in-list .url-single-in-list__text {
+  flex-grow: 1;
+  padding: 5px 0;
+}
+
+.main-page .url-single-in-list .url-single-in-list__text p {
+  color: $teal;
+  transition: all .3s ease;
+}
+
+.main-page .url-single-in-list button {
+  background-color: transparent;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  color: $google;
+  transition: all .3s ease;
+}
+
+.main-page .selected-url h3 {
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: $teal;
+
+  flex-basis: 110px;
+}
+
+.main-page .selected-url p {
+  flex-grow: 1;
+  width: 20px;
+}
+
+.main-page .selected-url .title-text {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.main-page .selected-url a {
+  color: $gray-dark;
+  transition: all .3s ease;
+}
+
+.main-page .selected-url a:hover { color: lighten($teal, 10%); }
+
+
+
+@media (min-width: 1440px){
+  .main-page {
+    align-items: flex-start;
+    padding-top: 60px;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-height: 900px){
+  .main-page .urls-list { height: 550px; }
+}
+
+@media (max-width: 767px) {
+  .main-page { padding: 0 15px !important; height: auto !important; }
+  .main-page .wrapper { flex-direction: column-reverse; }
+  .main-page .selected-url { margin-left: 0 !important; width: 100%; }
+  .main-page .urls-list-container { width: 100%; margin-top: 30px; margin-bottom: 25px; }
+  .main-page p, .main-page button { font-size: 14px; }
+  .main-page .selected-url h3 { flex-basis: 100px !important; }
+  .main-page .selected-url .title-text { margin-bottom: 10px !important; }
+}
+
+
+//

@@ -14,7 +14,7 @@ const defaultState = {
   selected: {
     title: 'urlSelected',
     url: 'urlselected.thisproject.com',
-    description: 'this is the urlSelected'
+    description: 'urlSelected Description'
   }
 }
 
